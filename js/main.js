@@ -10,6 +10,9 @@ class PhotoGallery {
     document.addEventListener("DOMContentLoaded", () => {
       this.getImg();
     });
+    this.searchForm.addEventListener("submit", (e) => {
+      this.getSearchedImages(e);
+    });
   }
   async getImg() {
     const baseURL = "https://api.pexels.com/v1/curated?per_page=12";
@@ -40,6 +43,15 @@ class PhotoGallery {
       `;
       this.galleryDvl.appendChild(item);
     });
+  }
+  async getSearchedImages(e) {
+    e.preventDefault();
+    this.galleryDvl.innerHTML = "";
+    const searchValue = e.target.querySelector("input").value;
+    const baseURL =
+      await `https://api.pexels.com/v1/search?query=${searchValue}&per_page=12`;
+    const data = await this.fetchImages(baseURL);
+    this.GenerateHTML(data.photos);
   }
 }
 const gallery = new PhotoGallery();
