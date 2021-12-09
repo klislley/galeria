@@ -1,6 +1,6 @@
 class PhotoGallery {
   constructor() {
-    this.API_KEY = "563492ad6f9170000100000149fe7881c54e40e2911701b47446c8da";
+    this.API_KEY = "api-pexels";
     this.galleryDvl = document.querySelector(".gallery");
     this.searchForm = document.querySelector("header form");
     this.loadMore = document.querySelector(".load-more");
